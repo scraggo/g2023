@@ -6,7 +6,7 @@ type Props = {
   searchText: string;
 };
 
-const Wrapper = ({ children }: { children: any }) => <main>{children}</main>;
+const Wrapper = ({ children }: { children?: any }) => <main>{children}</main>;
 
 export default function SearchResults({ searchText }: Props) {
   const { data, error, isLoading } = useNPMSearch(searchText);
@@ -17,7 +17,7 @@ export default function SearchResults({ searchText }: Props) {
 
   if (error) {
     console.error(error);
-    return <Wrapper>error</Wrapper>;
+    return <Wrapper>error - see console</Wrapper>;
   }
 
   return (

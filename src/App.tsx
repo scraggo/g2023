@@ -1,15 +1,17 @@
-// import * as React from 'react';
+import * as React from 'react';
 import { ChakraProvider, theme } from '@chakra-ui/react';
-import { ColorModeSwitcher } from './ColorModeSwitcher';
 
+import Header from './Header';
 import SearchResults from './SearchResults';
 
-export const App = () => (
-  <ChakraProvider theme={theme}>
-    <header>
-      <ColorModeSwitcher />
-    </header>
+export const App = () => {
+  const [searchText, setSearchText] = React.useState('');
+  const canGetResults = searchText.length > 0;
 
-    <SearchResults searchText="react-window" />
-  </ChakraProvider>
-);
+  return (
+    <ChakraProvider theme={theme}>
+      <Header onSubmit={setSearchText} />
+      {canGetResults ? <SearchResults searchText={searchText} /> : null}
+    </ChakraProvider>
+  );
+};
