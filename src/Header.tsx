@@ -12,11 +12,12 @@ export default function Header({ onSubmit }: Props) {
   const [inputText, setInputText] = React.useState('');
 
   return (
-    <Flex as="header" maxWidth={900}>
+    <Flex as="header">
       <SearchInput
         onChange={(event: React.FormEvent<HTMLInputElement>) =>
           setInputText(event.currentTarget.value)
         }
+        onSubmit={() => onSubmit(inputText)}
         value={inputText}
       />
       <Button onClick={() => onSubmit(inputText)} colorScheme="blackAlpha">
