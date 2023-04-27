@@ -1,10 +1,11 @@
 // import * as React from 'react';
-import { Box, Link, Text } from '@chakra-ui/react';
+import { Box, Link, Spinner, Text } from '@chakra-ui/react';
 
 import { useNPMSearch } from './hooks';
 
 type Props = {
   searchText: string;
+  shouldForceError: boolean;
 };
 
 interface Result {
@@ -19,16 +20,24 @@ interface Result {
 }
 
 const Wrapper = ({ children }: { children?: any }) => (
-  <Box as="main" mt={2}>
+  <Box as="main" mt={6}>
     {children}
   </Box>
 );
 
-export default function SearchResults({ searchText }: Props) {
-  const { data = [], error, isLoading } = useNPMSearch(searchText);
+export default function SearchResults({ searchText, shouldForceError }: Props) {
+  const {
+    data = [],
+    error,
+    isLoading,
+  } = useNPMSearch(shouldForceError ? '' : searchText);
 
   if (isLoading) {
-    return <Wrapper>loading</Wrapper>;
+    return (
+      <Wrapper>
+        <Spinner />
+      </Wrapper>
+    );
   }
 
   if (error) {
@@ -38,6 +47,9 @@ export default function SearchResults({ searchText }: Props) {
 
   return (
     <Wrapper>
+      <Text as="h2" fontWeight="bold" fontSize="xl" mb={6}>
+        {data.length} packages found
+      </Text>
       {data.map((result: Result) => {
         const { package: pkg } = result;
         const { description, links, name } = pkg;
