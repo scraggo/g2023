@@ -1,10 +1,32 @@
 # Gremlin Frontend Take Home
 
+## 👋 My Contributions
+
+- Fully functional npm search
+- Other data is added beyond package name and description.
+- Loading and error states are handled
+- Styling: using ChakraUI's declarative approach
+- React APIs: useState, handlers, etc
+- Minimal comments, except to call certain things out
+
+**Extra Credit included:**
+
+- test suite to make sure the expected number of packages are rendered and their expected properties
+- functionality to fail the API requests on purpose to test error states using a fixed position checkbox
+- Dynamic theming - dark and light mode
+- Responsive design - works at any device width
+
+---
+
 > Build NPM package search tool
 
-- [What we are looking for](#what-we-are-looking-for)
-- [Example API request](#example-api-request)
-- [Extra Credit](#extra-credit)
+- [Gremlin Frontend Take Home](#gremlin-frontend-take-home)
+  - [👋 My Contributions](#-my-contributions)
+  - [What we are looking for](#what-we-are-looking-for)
+  - [React](#react)
+  - [Extra Credit](#extra-credit)
+  - [Expectations](#expectations)
+  - [Example API request](#example-api-request)
 
 The task is to build a search form for npm packages and display a list from the API call payload.
 
@@ -27,10 +49,9 @@ You may use any pattern or library that you find suitable to accomplish this tas
 - Proper use of React APIs.
 - Clean, well-commented code. We prefer clarity over cleverness.
 
-
 ## React
 
-You may use whatever patterns and state management you prefer while working on this. The choice of libraries and state management patterns is not as important as a functioning project. 
+You may use whatever patterns and state management you prefer while working on this. The choice of libraries and state management patterns is not as important as a functioning project.
 
 ## Extra Credit
 
