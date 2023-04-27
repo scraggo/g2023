@@ -1,15 +1,8 @@
 import * as React from 'react';
-import {
-  Box,
-  Button,
-  Checkbox,
-  Flex,
-  Text,
-  useColorModeValue,
-} from '@chakra-ui/react';
+import { Box, Checkbox, Flex, Text, useColorModeValue } from '@chakra-ui/react';
 
 import { ColorModeSwitcher } from './ColorModeSwitcher';
-import SearchInput from './SearchInput';
+import SearchForm from './SearchForm';
 
 type Props = {
   onForceError: (val: any) => void;
@@ -22,7 +15,6 @@ export default function Header({
   onSubmit,
   shouldForceError,
 }: Props) {
-  const [inputText, setInputText] = React.useState('');
   const colorScheme = useColorModeValue('blackAlpha', 'gray');
 
   return (
@@ -38,23 +30,16 @@ export default function Header({
           colorScheme="red"
           position="fixed"
           right={4}
-          onChange={() => onForceError(!shouldForceError)}
+          onChange={() => {
+            onForceError(!shouldForceError);
+          }}
           checked={shouldForceError}
         >
           Show error state
         </Checkbox>
       </Flex>
       <Flex>
-        <SearchInput
-          onChange={(event: React.FormEvent<HTMLInputElement>) =>
-            setInputText(event.currentTarget.value)
-          }
-          onSubmit={() => onSubmit(inputText)}
-          value={inputText}
-        />
-        <Button onClick={() => onSubmit(inputText)} colorScheme={colorScheme}>
-          Search
-        </Button>
+        <SearchForm colorScheme={colorScheme} onSubmit={onSubmit} />
         <ColorModeSwitcher />
       </Flex>
     </Box>

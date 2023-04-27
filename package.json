@@ -27,8 +27,9 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "eject": "react-scripts eject",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "test-dbg": "react-scripts --inspect test --runInBand --no-cache --testTimeout=99999"
   },
   "eslintConfig": {
     "extends": "react-app"

@@ -1,4 +1,4 @@
-// import * as React from 'react';
+import * as React from 'react';
 import { Box, Spinner, Text, useColorModeValue } from '@chakra-ui/react';
 
 import { useNPMSearch } from './hooks';
@@ -41,13 +41,18 @@ export default function SearchResults({ searchText, shouldForceError }: Props) {
       <Text as="h2" fontWeight="bold" fontSize="2xl" mb={6}>
         {data.length} packages found
       </Text>
-      {data.map((result) => (
-        <SearchResult
-          colorMode={colorMode}
-          isMatch={searchText === result.package.name}
-          result={result}
-        />
-      ))}
+      {data.map((result) => {
+        const { name } = result.package;
+
+        return (
+          <SearchResult
+            key={name}
+            colorMode={colorMode}
+            isMatch={searchText === name}
+            result={result}
+          />
+        );
+      })}
     </Wrapper>
   );
 }

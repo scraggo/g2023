@@ -1,4 +1,4 @@
-// import * as React from 'react';
+import * as React from 'react';
 import { Box, Flex, Icon, Link, Text } from '@chakra-ui/react';
 import { FaUserCircle } from 'react-icons/fa';
 
@@ -34,10 +34,9 @@ export default function SearchResult({ colorMode, isMatch, result }: Props) {
       borderBottomColor="gray.100"
       pb={2}
       mb={2}
-      key={name}
     >
-      <Box>
-        <Link fontSize="xl" fontWeight="bold" href={npm} mb={bottomTextMargin}>
+      <Box mb={bottomTextMargin}>
+        <Link fontSize="xl" fontWeight="bold" href={npm}>
           {name}
         </Link>
         {isMatch ? (
@@ -54,10 +53,10 @@ export default function SearchResult({ colorMode, isMatch, result }: Props) {
       <Text mb={bottomTextMargin}>{description}</Text>
       {keywords && keywords.length > 0 ? (
         <Box mb={bottomTextMargin}>
-          {keywords.map((keyword) => (
+          {keywords.map((keyword, idx) => (
             <Text
               as="span"
-              key={keyword}
+              key={idx}
               p={1}
               mr={1}
               mb={bottomTextMargin}
